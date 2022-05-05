@@ -9,3 +9,8 @@ resource "google_sql_database_instance" "sql-instance" {
     tier = "db-f1-micro"
   }
 }
+
+resource "google_sql_database" "database" {
+  name     = "prod-db"
+  instance = google_sql_database_instance.sql-instance.name
+}
