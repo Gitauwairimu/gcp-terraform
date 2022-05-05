@@ -13,7 +13,7 @@ resource "google_compute_subnetwork" "bqsubnet1" {
 }
 
 resource "google_compute_firewall" "allow_80" {
-  name = "allow-80"
+  name = "allow-port-80"
   source_ranges = ["0.0.0.0/0"]
   network = google_compute_network.bq.id
   allow {

@@ -1,5 +1,5 @@
 provider "google" {
   project     = "pork-merchant"
   region      = "us-central1"
-  credentials = "terrakey.json"
+  credentials = "pork-merchant-key.json"
 }
