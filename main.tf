@@ -58,7 +58,7 @@ resource "google_compute_instance" "utilityvm" {
       
       
     }
-    auto_delete = false
+    auto_delete = true
   }
 
 
