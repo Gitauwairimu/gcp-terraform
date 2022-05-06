@@ -1,6 +1,4 @@
-Instructions for Use
-
-# gcp-terraform
+# gcp-terraform Instructions for Use
 
 1. To use the code you must have access to GCP account, a downloaded key to which you point to in provider.tf.
 
