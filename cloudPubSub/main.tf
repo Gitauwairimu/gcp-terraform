@@ -1,5 +1,11 @@
 resource "google_pubsub_topic" "readers" {
   name = "readers"
+
+  message_storage_policy {
+    allowed_persistence_regions = [
+      "us-central1",
+    ]
+  }
 }
 
 
