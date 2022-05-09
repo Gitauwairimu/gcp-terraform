@@ -10,8 +10,8 @@ resource "google_spanner_instance" "instancespanner" {
 }
 
 resource "google_spanner_database" "dbspanner" {
-    instance = google_spanner_instance.instancespanner.name
     name = "dbspanner"
+    instance = google_spanner_instance.instancespanner.name
     deletion_protection = false
-  
+
 }
