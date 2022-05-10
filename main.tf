@@ -80,7 +80,7 @@ resource "google_compute_instance" "utilityvm" {
   }
 
   metadata = {
-    foo = "bar"
+    env = "dev"
   }
 
   metadata_startup_script = "echo hi > /test.txt"
