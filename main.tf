@@ -1,3 +1,47 @@
+terraform {
+  backend "gcs" {
+    bucket  = "storegcp-terraform-bucket"
+    prefix  = "terraform/state"
+  }
+}
+
+data "terraform_remote_state" "pork-merchant" {
+  backend   = "gcs"
+
+  config = {
+    bucket  = "storegcp-terraform-bucket"
+    prefix  = "terraform/state"
+    credentials = "pork-merchant-key.json"
+   # workspace = "${terraform.workspace}"
+  }
+}
+
+provider "googleworkspace" {
+  credentials             = "pork-merchant-key.json"
+  customer_id             = "A01b123xz"
+  impersonated_user_email = "impersonated@example.com"
+}
+
+resource "google_storage_bucket" "storegcp-terraform-bucket" {
+  name          = "storegcp-terraform-bucket"
+  location      = "EU"
+  force_destroy = true
+
+  labels = {
+    "env" = "dev"
+  }
+
+  lifecycle_rule {
+    condition {
+      age = 4
+    }
+    action {
+      type = "Delete"
+    }
+  }
+}
+
+
 resource "google_compute_network" "bq" {
   name                    = "bq"
   auto_create_subnetworks = false
